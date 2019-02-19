@@ -1,0 +1,38 @@
+Society
+------------------------------
+society id   :
+Society Name : 
+Addr		 :
+rooms		 :
+expenses	 :
+collections  :
+
+Expense
+------------------------------
+Expense id 		:
+Expense Activity:
+Expense Date	: 
+Expense Proof	:
+Expense Reason	:
+Amount			:
+
+Collections
+------------------------------
+collection_id	:
+Type			: 
+Description		:
+Amount			:
+Date			:
+room no			:
+
+Room
+-----------------------------
+Room no				:
+Tenant/Owner Name	:
+Maintanance	fee		:
+Room status 		: ( Occupied / Unoccupied )
+
+
+
+
+
