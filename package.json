@@ -1,0 +1,22 @@
+{
+  "name": "societymanager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/imkunals726/SocietyManager.git"
+  },
+  "author": "Kunal Sawant",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/imkunals726/SocietyManager/issues"
+  },
+  "homepage": "https://github.com/imkunals726/SocietyManager#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
