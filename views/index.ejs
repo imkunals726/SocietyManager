@@ -1,3 +1,13 @@
-<%-include ./static/header -%>
-		<p>Welcome to the socman index web page..</p>	
-<%-include ./static/footer -%>
+<%-include  ./static/header -%>
+	<div class = 'row' >
+	<% Societies.forEach( function( society ){ %>
+		<div class="card" style="width: 18rem;">
+		  <img class="card-img-top" src="https://eviivo.com/wp-content/uploads/2017/10/harry-potter-bed.jpg" alt="Card image cap">
+		  <div class="card-body">
+		    <p class="card-text"><%= society.Name %><br><%=society.Addr%></p>
+
+		  </div>
+		</div>
+	<%});%>
+	</div>
+<%-include  ./static/footer -%>
