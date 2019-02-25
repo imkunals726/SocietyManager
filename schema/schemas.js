@@ -8,10 +8,11 @@ var RoomSchema 		= new mongoose.Schema( {
 });
 
 var SocietySchema 	= new mongoose.Schema({
-		Society_Id 		: Number,
 		Name 			: String,
 		Addr			: String,
-		Room_Nos        : [ Number ]
+		Profile_url		: String,
+		Floors			: Number,
+		MaxRoomsOnFloor : Number
 });
 
 var Room 		= new mongoose.model( 'Room' , RoomSchema );
