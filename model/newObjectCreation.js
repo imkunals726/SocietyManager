@@ -16,7 +16,7 @@ function createInitialRooms( models , res ){
 			var room_no = tmpfn * 100 ;
 			room_no 	+= tmprn
 			data = { Society_Id : res._id.str , 
-					Room_no : room_no,
+					Room_No : room_no,
 					Resident_Name : ' ',
 					Maintainance : 0,
 					Room_Status : 'Unoccupied'
