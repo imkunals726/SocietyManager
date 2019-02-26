@@ -1,10 +1,10 @@
 var mongoose 		= require( 'mongoose' );
 var RoomSchema 		= new mongoose.Schema( { 
-		Society_Id 		: Number ,
+		Society_Id 		: String ,
 		Room_No			: Number ,
-		Resident_name 	: String ,
+		Resident_Name 	: String ,
 		Maintainance	: Number ,
-		Room_status		: String 
+		Room_Status		: String 
 });
 
 var SocietySchema 	= new mongoose.Schema({
