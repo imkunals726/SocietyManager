@@ -2,11 +2,15 @@
 	<div class = 'row' >
 	<% Societies.forEach( function( society ){ %>
 		<div class="card" style="width: 18rem;">
-		  <img class="card-img-top" src= <%=   society.Profile_url %> alt="Card image cap">
+		  <img class="card-img-top" src= <%= society.Profile_url %> alt="Card image cap">
 		  <div class="card-body">
 		    <p class="card-text"><%= society.Name %><br><%=society.Addr%></p>
 		  </div>
+		  <form method = "post" action = "/society?id=<%=society._id%>" >
+		  		<input type="submit" name="View">
+		  </form>
 		</div>
+
 	<%});%>
 	</div>
 <%-include  ./static/footer -%>

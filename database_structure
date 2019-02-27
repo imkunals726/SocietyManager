@@ -27,10 +27,11 @@ room no			:
 
 Room
 -----------------------------
-Room no				:
-Tenant/Owner Name	:
-Maintanance	fee		:
-Room status 		: ( Occupied / Unoccupied )
+Society no       	: str
+Room no				: number  -- soc and room no are primary keys
+Tenant/Owner Name	: str
+Maintanance	fee		: number
+Room status 		: ( Occupied / Unoccupied ) str
 
 
 

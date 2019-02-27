@@ -1,8 +1,10 @@
 var express 	= require( 'express' );
 var mongoose 	= require( 'mongoose'   );
 var bodyparser 	= require( 'body-parser' );
-var models		= require( './schema/Schemas' )
-var creator 	= require('./model/newObjectCreation')
+var models		= require( './schema/Schemas' );
+var creator 	= require('./model/newObjectCreation');
+var url 		= require( 'url');
+var ObjectId	= require( 'mongodb' ).ObjectID;
 
 var host = 'localhost';
 var port = 3001;
@@ -35,6 +37,15 @@ app.post( '/new' , function( req , res ){
 	var tmpsociety = req.body.society;
     creator.newSociety( models , tmpsociety );
 	res.redirect( "/" );
+});
+
+app.post( '/society' , function( req , res ){
+	var req_id = req.query.id ;
+	console.log("id was " + req_id );
+	var response = models.Society.find( { _id : ObjectId( req_id ) } , function( err , response ){
+		res.send( 'Hello ' + response[0]  );
+	} );
+	
 });
 
 app.listen(port, host, function(){
