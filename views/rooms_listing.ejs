@@ -1,0 +1,33 @@
+<%- include ./static/header -%>
+		<%var floorNo = 0;%>
+		<div id = 'accordion'>
+		<% for( var floorName in Floors ){ %>
+		<% var roomsOnFloor = Floors[ floorName ]; %>
+			<div class = 'card'>
+				<div class="card-header" id="headingOne">
+					<h5 class="mb-0">
+		        		<button class="btn btn-link" data-toggle="collapse" data-target="#collapse<%=floorNo%>" aria-expanded="false" aria-controls="collapseOne">
+		          				<%=floorName%>
+		        		</button>
+		      		</h5>
+				</div>
+			</div>
+
+
+			<div id="collapse<%=floorNo%>" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+  				<div class="card-body">
+  					<div class = 'row'>
+  					<% roomsOnFloor.forEach( function( room ){%>
+  						
+  						<button class = 'btn btn-md btn-success col-md-4' style = 'margin:5'><%=room.Room_No%></button>
+  						
+        			<%});%>
+        			</div>
+        		
+      			</div>
+    		</div>	
+    		<%floorNo += 1%>
+    	<%}%>
+		</div>
+
+<%- include ./static/footer -%>

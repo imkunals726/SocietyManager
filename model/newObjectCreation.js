@@ -15,11 +15,13 @@ function createInitialRooms( models , res ){
 		for( var tmprn = 0; tmprn < res.MaxRoomsOnFloor ; tmprn++ ){
 			var room_no = tmpfn * 100 ;
 			room_no 	+= tmprn
-			data = { Society_Id : res._id.str , 
-					Room_No : room_no,
-					Resident_Name : ' ',
-					Maintainance : 0,
-					Room_Status : 'Unoccupied'
+			data = { 
+					Society_Id 			: res._id , 
+					Room_No 			: room_no,
+					Resident_Name 		: ' ',
+					Maintainance 		: 0,
+					Floor_No			: tmpfn,
+					Room_Status 		: 'Unoccupied'
 				};
 			newRoom( models , data );
 		}

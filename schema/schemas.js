@@ -1,9 +1,11 @@
 var mongoose 		= require( 'mongoose' );
+var mongodb			= require('mongodb');
 var RoomSchema 		= new mongoose.Schema( { 
-		Society_Id 		: String ,
+		Society_Id 		: mongodb.ObjectId ,
 		Room_No			: Number ,
 		Resident_Name 	: String ,
 		Maintainance	: Number ,
+		Floor_No		: Number,
 		Room_Status		: String 
 });
 

@@ -42,10 +42,25 @@ app.post( '/new' , function( req , res ){
 app.post( '/society' , function( req , res ){
 	var req_id = req.query.id ;
 	console.log("id was " + req_id );
-	var response = models.Society.find( { _id : ObjectId( req_id ) } , function( err , response ){
-		res.send( 'Hello ' + response[0]  );
+	
+	models.Room.find( { Society_Id : ObjectId( req_id ) } , function( err , rooms ){
+
+		console.log( rooms);
+		var data = {}
+		rooms.forEach( function(room){
+			console.log( room );
+			if(data[ 'floor ' + room.Floor_No ] == null ){
+				data[ 'floor ' + room.Floor_No ] = [ room ] ;
+			}else{
+				data[ 'floor ' + room.Floor_No ].push( room );
+			}
+		});
+		console.log( "ddd" );
+		res.render( 'rooms_listing' , { Floors : data } );
 	} );
 	
+
+
 });
 
 app.listen(port, host, function(){
