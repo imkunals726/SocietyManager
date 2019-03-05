@@ -13,7 +13,7 @@ app 		= express( );
 
 mongoose.connect( "mongodb://localhost:27017/SocMan" , { useNewUrlParser : true } )
 
-
+app.use( express.static( __dirname + '/public' ) )
 app.set('view engine' ,'ejs' );
 app.use( bodyparser.urlencoded( { extended : true } ) );
 app.use( bodyparser.json( ) );
@@ -41,7 +41,6 @@ app.post( '/new' , function( req , res ){
 
 app.post( '/society' , function( req , res ){
 	var req_id = req.query.id ;
-	console.log("id was " + req_id );
 	
 	models.Room.find( { Society_Id : ObjectId( req_id ) } , function( err , rooms ){
 
@@ -55,12 +54,12 @@ app.post( '/society' , function( req , res ){
 				data[ 'floor ' + room.Floor_No ].push( room );
 			}
 		});
-		console.log( "ddd" );
 		res.render( 'rooms_listing' , { Floors : data } );
 	} );
-	
+});
 
-
+app.get( '/room' , function( req , res ) {
+	res.render( 'room_info' );
 });
 
 app.listen(port, host, function(){

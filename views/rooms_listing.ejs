@@ -7,7 +7,7 @@
 				<div class="card-header" id="headingOne">
 					<h5 class="mb-0">
 		        		<button class="btn btn-link" data-toggle="collapse" data-target="#collapse<%=floorNo%>" aria-expanded="false" aria-controls="collapseOne">
-		          				<%=floorName%>
+		          				<%=floorName[0].toUpperCase( ) + floorName.substr( 1 )%>
 		        		</button>
 		      		</h5>
 				</div>
@@ -18,8 +18,9 @@
   				<div class="card-body">
   					<div class = 'row'>
   					<% roomsOnFloor.forEach( function( room ){%>
-  						
-  						<button class = 'btn btn-md btn-success col-md-4' style = 'margin:5'><%=room.Room_No%></button>
+  						<form action = "/room?id=<%=room._id%>" class = 'col-md-4'>
+  							<button class = 'btn btn-md btn-success col-md-12' style = 'margin:5'><%=room.Room_No + 1 %></button>
+  						</form>
   						
         			<%});%>
         			</div>
