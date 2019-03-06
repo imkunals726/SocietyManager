@@ -13,7 +13,10 @@ app 		= express( );
 
 mongoose.connect( "mongodb://localhost:27017/SocMan" , { useNewUrlParser : true } )
 
-app.use( express.static( __dirname + '/public' ) )
+var public_dir = __dirname + '\\public'
+
+app.use( express.static( public_dir ) );
+app.set('views', [__dirname + '\\views', public_dir ]);
 app.set('view engine' ,'ejs' );
 app.use( bodyparser.urlencoded( { extended : true } ) );
 app.use( bodyparser.json( ) );
