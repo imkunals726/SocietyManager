@@ -25,6 +25,16 @@ Amount			:
 Date			:
 room no			:
 
+
+Maintaince
+------------------------------
+_id( maintaince_id ): ObjectID
+room_id				: ObjectID
+month				: String
+Amount				: Number
+
+
+
 Room
 -----------------------------
 Society no       	: str

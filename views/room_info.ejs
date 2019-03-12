@@ -47,5 +47,29 @@
     </div>
   </div>
 </div>
+<div>
+	<table class="table table-striped">
+		<thead>
+			<th>#</th>
+			<th>Month</th>
+			<th>Amount</th>
+			<th>Status</th>
+		</thead>
+		<tbody>
+		<%Months.forEach( function( month ){ %>
+			<tr>
+				<td>#</td>
+				<td><%=month%></td>
+				<td><%=350%></td>
+				<% if( maintainance[ month ] ) { status = false;} else{status= true;} %>
+				<td><%=status%></td>
+
+			</tr>
+		<%} );%>
+		</tbody>
+	</table>
+</div>
+
+
 
 <%-include ./html/footer -%>

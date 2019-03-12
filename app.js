@@ -5,6 +5,7 @@ var models		= require( './schema/Schemas' );
 var creator 	= require('./model/newObjectCreation');
 var url 		= require( 'url');
 var ObjectId	= require( 'mongodb' ).ObjectID;
+var moment		= require( 'moment' );
 
 var host = 'localhost';
 var port = 3001;
@@ -62,7 +63,7 @@ app.post( '/society' , function( req , res ){
 });
 
 app.get( '/room' , function( req , res ) {
-	res.render( 'room_info' );
+	res.render( 'room_info' ,{ Months : moment.months( ) , maintainance : { January : 'paid' } } );
 });
 
 app.listen(port, host, function(){
