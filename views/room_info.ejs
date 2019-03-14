@@ -54,16 +54,42 @@
 			<th>Month</th>
 			<th>Amount</th>
 			<th>Status</th>
+			<th>action</th>
 		</thead>
 		<tbody>
+		<script type="text/javascript">
+			function disablebutton( btn ){
+				btn.disabled = true;
+			}
+		</script>
+		<% var currentMaintaince = 350 %>
 		<%Months.forEach( function( month ){ %>
 			<tr>
 				<td>#</td>
 				<td><%=month%></td>
-				<td><%=350%></td>
-				<% if( maintainance[ month ] ) { status = false;} else{status= true;} %>
+				<%if( maintainance[ month.toLowerCase( ) ] ) {%>
+				<% 	status = true;%> 
+				<%	mnt = maintainance[ month.toLowerCase( ) ]%>
+				<%}else{%>
+				<%	status= false;				%>
+				<%	mnt = currentMaintaince;	%>
+				<%} %>
+				<td><%=mnt%></td>
+				
 				<td><%=status%></td>
+				<td><form action="/pay_maintainance" method = "post" >
+				<input type="hidden" name="maintainance[room_id]"  	value = "<%=room_id%>">
+				<input type="hidden" name="maintainance[month]"  	value="<%=month.toLowerCase( )%>">
+				<input type="hidden" name="maintainance[amount]"  	value="<%=mnt%>">
+				<input type="hidden" name="maintainance[year]"  	value="<%=2019%>">
+				<%if(!status){%>
+					<button class = 'btn btn-danger' id = "<%=month%>" > Pay </button>
+				<%} else { %>
+					<button id = "<%=month%>" class = 'btn btn-success' disabled ><span class="glyphicon glyphicon-ok">Paid</span>      </button>
+				<%}%>
 
+				</form>
+				</td>
 			</tr>
 		<%} );%>
 		</tbody>

@@ -31,7 +31,7 @@ Maintaince
 _id( maintaince_id ): ObjectID
 room_id				: ObjectID
 month				: String
-Amount				: Number
+amount				: Number
 
 
 

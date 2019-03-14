@@ -62,8 +62,29 @@ app.post( '/society' , function( req , res ){
 	} );
 });
 
-app.get( '/room' , function( req , res ) {
-	res.render( 'room_info' ,{ Months : moment.months( ) , maintainance : { January : 'paid' } } );
+app.post( '/room' , function( req , res ) {
+
+	room_id = req.body.room_id;
+	console.log( room_id );
+	today = new Date( );
+	models.Maintainance.find({room_id:room_id} , function(err , response ){
+		data = {}
+		response.forEach( function( resp ){
+			data[resp.month.toLowerCase( )] = resp.amount;
+		} );
+		res.render( 'room_info' ,{ room_id : room_id , Months : moment.months( ).slice( 0 , today.getMonth( ) ) , maintainance : data } );
+	});
+});
+
+app.post('/pay_maintainance' , function( req , res ){
+	data 			= req.body.maintainance;
+	data.room_id	= ObjectId( data.room_id );
+	data.amount 	= Number( data.amount);
+
+	var maint 		= models.Maintainance( data );
+	maint.save( function(err , response ){
+		res.redirect( '/room' , {body:{room_id:room_id}})
+	});
 });
 
 app.listen(port, host, function(){
