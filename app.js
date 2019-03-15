@@ -6,6 +6,7 @@ var creator 	= require('./model/newObjectCreation');
 var url 		= require( 'url');
 var ObjectId	= require( 'mongodb' ).ObjectID;
 var moment		= require( 'moment' );
+var methodOverride = require('method-override');
 
 var host = 'localhost';
 var port = 3001;
@@ -21,6 +22,7 @@ app.set('views', [__dirname + '\\views', public_dir ]);
 app.set('view engine' ,'ejs' );
 app.use( bodyparser.urlencoded( { extended : true } ) );
 app.use( bodyparser.json( ) );
+app.use( methodOverride( '_method' ) );
 
 app.get('/' , function( req , res ){
 	models.Society.find( {} , function( err , result ){
@@ -37,14 +39,17 @@ app.get( '/new' , function( req , res ){
 		res.render( 'new' );
 });
 
+//this is using the right verb
 app.post( '/new' , function( req , res ){
 	var tmpsociety = req.body.society;
     creator.newSociety( models , tmpsociety );
 	res.redirect( "/" );
 });
 
-app.post( '/society' , function( req , res ){
-	var req_id = req.query.id ;
+//this is wrong verb should be get only i won't change it now :P :)
+//And i can't belive i finally changed this to get
+app.get( '/society/:id' , function( req , res ){
+	var req_id = req.params.id ;
 	
 	models.Room.find( { Society_Id : ObjectId( req_id ) } , function( err , rooms ){
 
@@ -62,9 +67,11 @@ app.post( '/society' , function( req , res ){
 	} );
 });
 
-app.post( '/room' , function( req , res ) {
+// this method should be get
+app.get( '/room' , function( req , res ) {
 
-	room_id = req.body.room_id;
+	room_id = req.query.room_id;
+	console.log( req.query );
 	console.log( room_id );
 	today = new Date( );
 	models.Maintainance.find({room_id:room_id} , function(err , response ){
@@ -76,14 +83,15 @@ app.post( '/room' , function( req , res ) {
 	});
 });
 
-app.post('/pay_maintainance' , function( req , res ){
+//this method should be update
+app.put('/pay_maintainance' , function( req , res ){
 	data 			= req.body.maintainance;
 	data.room_id	= ObjectId( data.room_id );
 	data.amount 	= Number( data.amount);
 
 	var maint 		= models.Maintainance( data );
 	maint.save( function(err , response ){
-		res.redirect( '/room' , {body:{room_id:room_id}})
+		res.redirect( '/room?room_id='+ data.room_id )
 	});
 });
 

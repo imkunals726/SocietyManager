@@ -6,7 +6,7 @@
 		  <div class="card-body">
 		    <p class="card-text"><%= society.Name %><br><%=society.Addr%></p>
 		  </div>
-		  <form method = "post" action = "/society?id=<%=society._id%>" >
+		  <form method = "get" action = "/society/<%=society._id%>" >
 		  		<input type="submit" name="View">
 		  </form>
 		</div>

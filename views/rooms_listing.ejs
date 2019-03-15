@@ -18,7 +18,7 @@
   				<div class="card-body">
   					<div class = 'row'>
   					<% roomsOnFloor.forEach( function( room ){%>
-  						<form action = "/room" class = 'col-md-4' method = 'post'>
+  						<form action = "/room" class = 'col-md-4' method = 'get'>
   							<input type = 'hidden' id='room_id' name = 'room_id' value = "<%=room._id%>">
   							<button class = 'btn btn-md btn-success col-md-12' style = 'margin:5'><%=room.Room_No + 1 %></button>
   						</form>

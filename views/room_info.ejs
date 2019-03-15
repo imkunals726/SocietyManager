@@ -77,7 +77,8 @@
 				<td><%=mnt%></td>
 				
 				<td><%=status%></td>
-				<td><form action="/pay_maintainance" method = "post" >
+				<td><form action="/pay_maintainance?_method=PUT" method = "POST" >
+				
 				<input type="hidden" name="maintainance[room_id]"  	value = "<%=room_id%>">
 				<input type="hidden" name="maintainance[month]"  	value="<%=month.toLowerCase( )%>">
 				<input type="hidden" name="maintainance[amount]"  	value="<%=mnt%>">
