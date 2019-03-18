@@ -6,7 +6,10 @@ var RoomSchema 		= new mongoose.Schema( {
 		Resident_Name 	: String ,
 		Maintainance	: Number ,
 		Floor_No		: Number,
-		Room_Status		: String 
+		Room_Status		: String ,
+		Skills			: String,
+		Info			: String,
+		Website			: String
 });
 
 var SocietySchema 	= new mongoose.Schema({
