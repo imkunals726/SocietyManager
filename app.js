@@ -73,13 +73,13 @@ app.get( '/room' , function( req , res ) {
 	room_id = req.query.room_id;
 	console.log( req.query );
 	console.log( room_id );
-	today = new Date( );
+	today 	= new Date( );
 	models.Maintainance.find({room_id:room_id} , function(err , response ){
 		data = {}
 		response.forEach( function( resp ){
 			data[resp.month.toLowerCase( )] = resp.amount;
 		} );
-		res.render( 'room_info' ,{ room_id : room_id , Months : moment.months( ).slice( 0 , today.getMonth( ) ) , maintainance : data } );
+		res.render( 'room_info' ,{ room_id : room_id , Months : moment.months( ).slice( 0 , today.getMonth( ) + 1 ) , maintainance : data } );
 	});
 });
 
@@ -90,7 +90,7 @@ app.put('/pay_maintainance' , function( req , res ){
 	data.amount 	= Number( data.amount);
 
 	var maint 		= models.Maintainance( data );
-	maint.save( function(err , response ){
+	maint.save( function( err , response ){
 		res.redirect( '/room?room_id='+ data.room_id )
 	});
 });
