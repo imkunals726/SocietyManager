@@ -24,6 +24,10 @@ app.use( bodyparser.urlencoded( { extended : true } ) );
 app.use( bodyparser.json( ) );
 app.use( methodOverride( '_method' ) );
 
+app.get('/login' , function( req , res ){
+	res.render('login');
+});
+
 app.get('/' , function( req , res ){
 	models.Society.find( {} , function( err , result ){
 		if( err ){
@@ -94,7 +98,9 @@ app.put('/pay_maintainance' , function( req , res ){
 		res.redirect( '/room?room_id='+ data.room_id )
 	});
 });
-
+app.get('/register' , function( req , res ) {
+	res.render( 'register' );
+});
 app.listen(port, host, function(){
     console.log("Server has started!!!");
 });

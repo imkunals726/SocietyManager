@@ -1,3 +1,17 @@
+User
+----------------------------
+Name 				: String
+SocEmailId			: String( Email )
+OtherSiteEmailIds	: List( Emails )
+Password			: String
+Info				: String
+DisplayPic			: String
+
+
+
+
+
+
 Society
 ------------------------------
 society id   :
@@ -42,6 +56,7 @@ Room no				: number  -- soc and room no are primary keys
 Tenant/Owner Name	: str
 Maintanance	fee		: number
 Room status 		: ( Occupied / Unoccupied ) str
+Occupant User		: ObjectID
 
 
 
