@@ -1,17 +1,25 @@
 <%- include ./html/header -%>
 		<%var floorNo = 0;%>
 		<div id = 'accordion'>
+		<div class = 'row'>
 		<% for( var floorName in Floors ){ %>
 		<% var roomsOnFloor = Floors[ floorName ]; %>
-			<div class = 'card'>
-				<div class="card-header" id="headingOne">
-					<h5 class="mb-0">
-		        		<button class="btn btn-link" data-toggle="collapse" data-target="#collapse<%=floorNo%>" aria-expanded="false" aria-controls="collapseOne">
-		          				<%=floorName[0].toUpperCase( ) + floorName.substr( 1 )%>
-		        		</button>
-		      		</h5>
+			
+			<div class = 'card mt-2 ml-2 mr-2 col-md-5' style="background-color: #303030;padding:0px;">
+				<div class="card-header panel-heading" id="headingOne">
+					<h3 class="card-title"><%=floorName[0].toUpperCase( ) + floorName.substr( 1 )%><span class="pull-right clickable" data-toggle="collapse" data-target="#collapse<%=floorNo%>" aria-expanded="false" aria-controls="collapseOne"><i class="fa fa-caret-down fa-4x"></i></span>
+					</h3>
+					
+
+
+					<!-- <h5 class="mb-0">
+		        		<a class="btn btn-link" data-toggle="collapse" data-target="#collapse<%=floorNo%>" aria-expanded="false" aria-controls="collapseOne">
+		          				
+		        		</a>
+		      		</h5> -->
 				</div>
 			</div>
+		
 
 
 			<div id="collapse<%=floorNo%>" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
@@ -30,6 +38,7 @@
     		</div>	
     		<%floorNo += 1%>
     	<%}%>
+    	</div>
 		</div>
 
 <%- include ./html/footer -%>
